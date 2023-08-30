@@ -29,10 +29,11 @@ enter `instantiate` and hit enter:
 (Bad_Apple_rPlace) pkg> instantiate
 ```
 
+Afterwards you can hit `backspace` to return to REPL mode.
 
 ## Running
 
-Afterwards you should be able to run the following:
+You should now be able to run the following:
 ```julia
 julia> include("./main.jl");
 

@@ -1,6 +1,6 @@
-using Arrow, DataFrames, Colors, GLMakie
+using Arrow, DataFrames, Colors, GLMakie, ProgressMeter
 
-const dfc = DataFrame(Arrow.Table("./place_color.feather"))
+const dfc = DataFrame(Arrow.Table("./place_color_zstd.feather"))
 dfc.color = reinterpret.(RGB24, dfc.pixel_color)
 gdfs = groupby(dfc, :timestamp)
 const xmin, xmax = extrema(dfc.cord1)
@@ -36,13 +36,16 @@ function update_notify_pixels!(img, cord1::AbstractVector, cord2::AbstractVector
     return nothing
 end
 
-function main(output="bad_apple.mp4")
-    scene, ax, canvas_matrix = prep_scene(dfc)
-    record(scene, output, 1:30:462849-19; framerate=30) do i
+function main(output="bad_apple.mp4"; test_run=true)
+    scene, ax, canvas_matrix = prep_scene()
+    lastidx = test_run ? 3000 : size(gdfs, 1)
+    p = Progress(lastidx)
+    record(scene, output, 1:30:lastidx-19; framerate=30) do i
         for O = 0:29
             update_notify_pixels!(canvas_matrix, gdfs[i+O])
         end
+        update!(p, i)
         notify(canvas_matrix)
     end
-    return output
+    println("Done.")
 end
