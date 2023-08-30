@@ -2,11 +2,17 @@
 
 Data source: https://placedata.reddit.com/data/canvas-history/2023/index.html
 
-But I have cleaned up it into Apache Arrow format for sanity. [Download here]()
+But I have cleaned up it into Apache Arrow format for sanity. [Download here](https://github.com/Moelf/Bad_Apple_rPlace.jl/releases/download/v0.1.0/place_color_zstd.feather)
 and put it at the repo's root directory.
 
 Btw, you can always copy code blocks including `julia>`, the Julia REPL is smart enough to ignore
 them when pasting.
+
+After downloading, the folder structure should look like this:
+```
+> ls
+main.jl  Manifest.toml  place_color_zstd.feather  Project.toml  README.md
+```
 
 ## Setting up Julia
 
