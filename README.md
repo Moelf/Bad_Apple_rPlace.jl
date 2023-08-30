@@ -1,4 +1,5 @@
 ## [Watch the full video](https://www.youtube.com/watch?v=b7hwUknnDj0)
+## [Original r/touhou reddit thread](https://www.reddit.com/r/touhou/comments/157fgs7/full_animate_bad_apple_is_completed/)
 - - -
 ## Downloading data
 
